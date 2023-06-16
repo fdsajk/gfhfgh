@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>예매내역 및 찜한 공연</title>
+   <meta charset="utf-8" />
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+      }
+
+      .container {
+         max-width: 800px;
+         margin: 0 auto;
+         padding: 20px;
+         background-color: #fff;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .date-filter {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 20px;
+      }
+
+      .date-filter button {
+         padding: 10px 20px;
+         font-size: 14px;
+         background-color: #fff;
+         color: #000;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         cursor: pointer;
+      }
+
+      .date-filter button.active {
+         background-color: #ff0066;
+         color: #fff;
+         border-color: #ff0066;
+      }
+
+      .reservation-list {
+         margin-bottom: 20px;
+      }
+
+      .reservation-list table {
+         width: 100%;
+         border-collapse: collapse;
+      }
+
+      .reservation-list th,
+      .reservation-list td {
+         padding: 8px;
+         text-align: left;
+         border-bottom: 1px solid #ccc;
+      }
+
+      .reservation-list th {
+         background-color: #ff0066;
+         color: #fff;
+      }
+
+      .wish-list {
+         margin-bottom: 20px;
+      }
+
+      .wish-list ul {
+         list-style-type: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      .wish-list li {
+         padding: 8px;
+         border-bottom: 1px solid #ccc;
+      }
+
+      .wish-list li:last-child {
+         border-bottom: none;
+      }
+
+      .wish-list li:hover {
+         background-color: #f9f9f9;
+      }
+
+      .wish-list li .item-name {
+         font-weight: bold;
+      }
+   </style>
+</head>
+<body>
+   <div class="container">
+      <h2>예매내역 및 찜한 공연</h2>
+      <div class="date-filter">
+         <button class="filter-btn active" onclick="filterByPeriod('7days')">7일</button>
+         <button class="filter-btn" onclick="filterByPeriod('15days')">15일</button>
+         <button class="filter-btn" onclick="filterByPeriod('1month')">1개월</button>
+         <button class="filter-btn" onclick="filterByPeriod('2months')">2개월</button>
+         <button class="filter-btn" onclick="filterByPeriod('3months')">3개월</button>
+         <button class="filter-btn" onclick="filterByPeriod('all')">전체</button>
+      </div>
+
+      <div class="reservation-list">
+         <h3>예매내역</h3>
+         <table>
+            <thead>
+               <tr>
+                  <th>예매처</th>
+                  <th>상품명</th>
+                  <th>공연일시</th>
+                  <th>매수</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>예매처 1</td>
+                  <td>상품명 1</td>
+                  <td>2023-01-01 20:00</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>예매처 2</td>
+                  <td>상품명 2</td>
+                  <td>2023-01-02 15:00</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>예매처 3</td>
+                  <td>상품명 3</td>
+                  <td>2023-01-05 19:30</td>
+                  <td>4</td>
+               </tr>
+               <!-- 예매내역 데이터를 동적으로 추가할 수 있습니다. -->
+            </tbody>
+         </table>
+      </div>
+
+      <div class="wish-list">
+         <h3>찜한 공연</h3>
+         <ul>
+            <li>
+               <span class="item-name">공연명 1</span>
+               <span class="item-date">2023-02-01 19:00</span>
+            </li>
+            <li>
+               <span class="item-name">공연명 2</span>
+               <span class="item-date">2023-02-05 15:30</span>
+            </li>
+            <li>
+               <span class="item-name">공연명 3</span>
+               <span class="item-date">2023-02-10 18:30</span>
+            </li>
+            <!-- 찜한 공연 데이터를 동적으로 추가할 수 있습니다. -->
+         </ul>
+      </div>
+   </div>
+
+   <script>
+      function filterByPeriod(period) {
+         var filterButtons = document.getElementsByClassName("filter-btn");
+         for (var i = 0; i < filterButtons.length; i++) {
+            filterButtons[i].classList.remove("active");
+         }
+         document.getElementById(period).classList.add("active");
+      }
+   </script>
+</body>
+</html>
+
